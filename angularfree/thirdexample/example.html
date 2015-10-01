@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="exampleApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Js Demo</title>
+    <script src="angular.js"></script>
+    <link href="bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap-theme.css" rel="stylesheet" />
+    <script>
+        var myApp=angular.module("exampleApp",[]);
+        myApp.controller("dayCtrl", function ($scope) {
+            var dayNames=["Sunday", "Monday", "Tuesday", "Wednesday",
+                "Thursday", "Friday", "Saturday"];
+            $scope.day = dayNames[new Date().getDay()];
+            $scope.tomorrow=dayNames[(new Date().getDay()+1)%7];
+        });
+        myApp.directive("highlight", function () {
+            return function (scope, element, attrs) {
+                if (scope.day == attrs["highlight"]) {
+                    element.css("color", "red");
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+<div class="panel" >
+    <div class="page-header">
+        <h3>Angular Js App</h3>
+    </div>
+    <h4 ng-controller="dayCtrl" highlight="Monday">Today is {{ day || "(unknown)" }}</h4>
+    <h4>Today is {{ tomorrow || "(unknown)" }}</h4>
+</div>
+</body>
+</html>
