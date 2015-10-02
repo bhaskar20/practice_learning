@@ -1,7 +1,7 @@
 /* jshint globalstrict: true */
 'use strict';
 
-var _ = require('lodash');
+require(['lodash'], function(_) {});
 
 function Scope() {
     this.$$watchers = [];
@@ -19,4 +19,3 @@ Scope.prototype.$digest = function() {
     });
 };
 };
-

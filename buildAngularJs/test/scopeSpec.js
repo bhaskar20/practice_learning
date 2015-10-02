@@ -10,7 +10,7 @@ describe('Scope', function() {
         scope.aProperty=1;
         expect(scope.aProperty).toBe(1);
     });
-
+});
     describe('digest', function() {
 
         var scope;
@@ -27,4 +27,3 @@ describe('Scope', function() {
             expect(listenerFn).toHaveBeenCalled();
         });
     });
-});
